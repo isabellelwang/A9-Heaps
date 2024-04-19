@@ -131,13 +131,21 @@ public class Heap<E extends Comparable<E>> {
         while (done && (this.hasLeftChild(pos) || this.hasRightChild(pos))) {
             if (this.hasLeftChild(pos) && this.hasRightChild(pos)) {
                 if (this.isBigger(rightChild(pos), leftChild(pos))) {
-                    int largerChildPos = rightChild(pos);
-                    this.swapWithRightChild(pos);
-                    pos = largerChildPos;
+                    if (this.isBigger(rightChild(pos), pos)) {
+                        int largerChildPos = rightChild(pos);
+                        this.swapWithRightChild(pos);
+                        pos = largerChildPos;
+                    } else {
+                        done = false;
+                    }
                 } else if (this.isBigger(leftChild(pos), rightChild(pos))) {
-                    int largerChildPos = leftChild(pos);
-                    this.swapWithLeftChild(pos);
-                    pos = leftChild(pos);
+                    if (this.isBigger(leftChild(pos), pos)) {
+                        int largerChildPos = leftChild(pos);
+                        this.swapWithLeftChild(pos);
+                        pos = leftChild(pos);
+                    } else {
+                        done = false;
+                    }
                 } else {
                     done = false;
                 }
@@ -146,12 +154,16 @@ public class Heap<E extends Comparable<E>> {
                     int largerNode = rightChild(pos);
                     this.swapWithRightChild(pos);
                     pos = rightChild(pos);
+                } else {
+                    done = false;
                 }
             } else if (this.hasLeftChild(pos)) {
                 if (this.isBigger(leftChild(pos), pos)) {
                     int largerNode = leftChild(pos);
                     this.swapWithLeftChild(pos);
                     pos = leftChild(pos);
+                } else {
+                    done = false;
                 }
             } else {
                 done = false;
@@ -174,7 +186,9 @@ public class Heap<E extends Comparable<E>> {
         E originalRoot = storage.get(0);
         storage.set(0, storage.remove(storage.size() - 1));
         bubbleDown();
+        print();
 
+        System.out.println("Original Root: ");
         return originalRoot;
     }
 
@@ -261,15 +275,15 @@ public class Heap<E extends Comparable<E>> {
         h.insert(10);
         h.insert(3);
         h.insert(14);
-
-        System.out.println("Bubble Sorted: ");
+        System.out.println("original heap: ");
         h.print();
 
-        System.out.println(h.popTop());
-        System.out.println(h.popTop());
+        // System.out.println("Bubble Sorted: ");
+        // h.print();
 
         System.out.println("bubble down");
-        h.print();
+        System.out.println(h.popTop());
+        System.out.println(h.popTop());
 
     }
 }
