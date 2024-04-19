@@ -18,7 +18,7 @@ Test your implementation using a `HeapTest` class.  At minimum, you should make 
 
 For the second part of the project, you will implement heap sort. To do this, you should start by implementing the `bubbleUp` and `bubbleDown` methods defined in class `Heap`.
 
-Since the `heapSort` method is takes an `ArrayList` of elements, you should build a temporary `Heap` object around the existing list.  Because your `Heap` class uses an `ArrayList` for its back-end implementation, you can do this by defining a private constructor that takes the `ArrayList` that needs to be sorted as an argument.  Once you've done this, you can use the existing `Heap` methods to sort the elements.  At the end, return the original `ArrayList`, whose elements will now be sorted.
+Since the `heapSort` method is takes an `ArrayList` of elements, you should build a temporary `Heap` object around the existing list.  Because your `Heap` class uses an `ArrayList` for its back-end implementation, you can do this by defining a private constructor that takes the `ArrayList` that needs to be sorted as an argument.  Once you've done this, you can use the existing `Heap` methods to sort the elements.  At the end, return the original `ArrayList`, whose elements will now be sorted. 
 
 When testing, you may find it useful to use the following syntax to create and initialize your array:
 

@@ -15,6 +15,19 @@ public class Heap<E extends Comparable<E>> {
         storage = new ArrayList<E>();
     }
 
+    /**
+     * private constructor to make a heap from a given ArrayList
+     * 
+     * @param al arraylist of numbers
+     */
+    private Heap(ArrayList<E> al) {
+        storage = new ArrayList<E>();
+        for (int i = 0; i < al.size(); i++) {
+            storage.add(al.get(i));
+            bubbleUp(i);
+        }
+    }
+
     /** @return heap size */
     public int size() {
         return storage.size();
@@ -126,9 +139,9 @@ public class Heap<E extends Comparable<E>> {
         // }
 
         int pos = 0;
-        boolean done = true;
+        boolean search = true; // Left child and right child are not greater than parent
         // int largerChildPos;
-        while (done && (this.hasLeftChild(pos) || this.hasRightChild(pos))) {
+        while (search && (this.hasLeftChild(pos) || this.hasRightChild(pos))) {
             if (this.hasLeftChild(pos) && this.hasRightChild(pos)) {
                 if (this.isBigger(rightChild(pos), leftChild(pos))) {
                     if (this.isBigger(rightChild(pos), pos)) {
@@ -136,7 +149,7 @@ public class Heap<E extends Comparable<E>> {
                         this.swapWithRightChild(pos);
                         pos = largerChildPos;
                     } else {
-                        done = false;
+                        search = false;
                     }
                 } else if (this.isBigger(leftChild(pos), rightChild(pos))) {
                     if (this.isBigger(leftChild(pos), pos)) {
@@ -144,10 +157,10 @@ public class Heap<E extends Comparable<E>> {
                         this.swapWithLeftChild(pos);
                         pos = leftChild(pos);
                     } else {
-                        done = false;
+                        search = false;
                     }
                 } else {
-                    done = false;
+                    search = false;
                 }
             } else if (this.hasRightChild(pos)) {
                 if (this.isBigger(rightChild(pos), pos)) {
@@ -155,7 +168,7 @@ public class Heap<E extends Comparable<E>> {
                     this.swapWithRightChild(pos);
                     pos = rightChild(pos);
                 } else {
-                    done = false;
+                    search = false;
                 }
             } else if (this.hasLeftChild(pos)) {
                 if (this.isBigger(leftChild(pos), pos)) {
@@ -163,10 +176,10 @@ public class Heap<E extends Comparable<E>> {
                     this.swapWithLeftChild(pos);
                     pos = leftChild(pos);
                 } else {
-                    done = false;
+                    search = false;
                 }
             } else {
-                done = false;
+                search = false;
             }
         }
 
@@ -184,11 +197,12 @@ public class Heap<E extends Comparable<E>> {
     public E popTop() {
         // FILL IN
         E originalRoot = storage.get(0);
-        storage.set(0, storage.remove(storage.size() - 1));
+        if (storage.size() > 1) {
+            System.out.println("TOp index:" + (storage.size() - 1));
+            storage.set(0, storage.remove(storage.size() - 1));
+        }
         bubbleDown();
-        print();
-
-        System.out.println("Original Root: ");
+        // System.out.println("Original Root: ");
         return originalRoot;
     }
 
@@ -244,7 +258,20 @@ public class Heap<E extends Comparable<E>> {
      * @param array list to sort
      */
     public static <T extends Comparable<T>> void heapSort(ArrayList<T> v) {
+        Heap<T> hh = new Heap<T>(v);
+        System.out.println("Heap contrusctor");
+        hh.print();
+
         // FILL IN
+        int vPos = v.size() - 1;
+        while (hh.size() > 0 && vPos >= 0) {
+            System.out.println("Index: " + vPos);
+            T top = hh.popTop();
+            System.out.println("Top " + top);
+            v.set(vPos, top);
+            vPos--;
+            System.out.println("ArrayList " + v);
+        }
     }
 
     /** Prints heap for debugging */
@@ -275,15 +302,27 @@ public class Heap<E extends Comparable<E>> {
         h.insert(10);
         h.insert(3);
         h.insert(14);
-        System.out.println("original heap: ");
-        h.print();
+        // System.out.println("original heap: ");
 
         // System.out.println("Bubble Sorted: ");
         // h.print();
+        // Testing bubble down
+        // System.out.println("bubble down");
+        // System.out.println(h.popTop());
+        // System.out.println(h.popTop());
 
-        System.out.println("bubble down");
-        System.out.println(h.popTop());
-        System.out.println(h.popTop());
+        Integer arr[] = { -2, 3, 9, -7, 1, 2, 6, -3 };
+        ArrayList<Integer> al = new ArrayList<>(Arrays.asList(arr));
+        System.out.println(al);
+        Heap<Integer> hh = new Heap<Integer>(al);
+        hh.heapSort(al);
+        // hh.print();
+
+        // hh.print();
+
+        // Call your heap constructor with `al` passed as an argument
+        // Use heap methods to sort the heap
+        // Set `al` equal to the ArrayList stored in the heap with heap.getData()
 
     }
 }
