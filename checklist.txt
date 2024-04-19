@@ -10,33 +10,33 @@ Listed below are various aspects of the assignment.  When you turn in your work,
 
 ### Heaps of Fun
 
-_____ 1 pt: Implements utility FILL-IN methods correctly
+____yes_ 1 pt: Implements utility FILL-IN methods correctly
 
-_____ 1 pt: Implements insert & bubble up method correctly
+___yes__ 1 pt: Implements insert & bubble up method correctly
 
-_____ 1 pt: Implements pop & bubble down method correctly
+___yes__ 1 pt: Implements pop & bubble down method correctly
 
-_____ 1 pt: Implements heap sort correctly
+___yes__ 1 pt: Implements heap sort correctly
 
 
 ## General Items:
 
-_____ 4 pts: Programs compile without errors or warnings
+___yes__ 4 pts: Programs compile without errors or warnings
 
-_____ 2 pts: Executes fully & consistently without crashing (exception/freeze)
+___yes__ 2 pts: Executes fully & consistently without crashing (exception/freeze)
 
-_____ 2 pt: Complies with style guidelines (missing items 1 pt each):
+__yes___ 2 pt: Complies with style guidelines (missing items 1 pt each):
 
-      _____ Classes & class members all have Javadoc header comments
+      ___yes__ Classes & class members all have Javadoc header comments
 
-      _____ Clear and consistent indentation of bracketed sections
+      __yes___ Clear and consistent indentation of bracketed sections
 
-      _____ Adheres to Java conventions on naming & capitalization
+      __yes___ Adheres to Java conventions on naming & capitalization
 
-      _____ Methods & variables all have clear and accurate names
+      __yes___ Methods & variables all have clear and accurate names
 
-      _____ Methods avoid confusing side effects
+      __yes___ Methods avoid confusing side effects
 
-_____ 1 pt: All required files included with submission (including completed checklist file)
+__yes___ 1 pt: All required files included with submission (including completed checklist file)
 
-_____ 1 pt: readme.md contains reflection on the assignment
+__yes___ 1 pt: readme.md contains reflection on the assignment

@@ -198,7 +198,7 @@ public class Heap<E extends Comparable<E>> {
         // FILL IN
         E originalRoot = storage.get(0);
         if (storage.size() > 1) {
-            System.out.println("TOp index:" + (storage.size() - 1));
+            // System.out.println("TOp index:" + (storage.size() - 1));
             storage.set(0, storage.remove(storage.size() - 1));
         }
         bubbleDown();
@@ -259,18 +259,18 @@ public class Heap<E extends Comparable<E>> {
      */
     public static <T extends Comparable<T>> void heapSort(ArrayList<T> v) {
         Heap<T> hh = new Heap<T>(v);
-        System.out.println("Heap contrusctor");
-        hh.print();
+        // System.out.println("Heap contrusctor");
+        // hh.print();
 
         // FILL IN
         int vPos = v.size() - 1;
         while (hh.size() > 0 && vPos >= 0) {
-            System.out.println("Index: " + vPos);
+            // System.out.println("Index: " + vPos);
             T top = hh.popTop();
-            System.out.println("Top " + top);
+            // System.out.println("Top " + top);
             v.set(vPos, top);
             vPos--;
-            System.out.println("ArrayList " + v);
+            // System.out.println("ArrayList " + v);
         }
     }
 
@@ -316,6 +316,8 @@ public class Heap<E extends Comparable<E>> {
         System.out.println(al);
         Heap<Integer> hh = new Heap<Integer>(al);
         hh.heapSort(al);
+
+        System.out.println(al);
         // hh.print();
 
         // hh.print();
