@@ -119,14 +119,45 @@ public class Heap<E extends Comparable<E>> {
      * the process with the child position.
      */
     private void bubbleDown() {
-        // int pos = 0;
-        // boolean done = false;
-        // while (!done) {
 
         // // FILL IN
         // // You should use the isBigger, leftChild, and rightChild methods.
         // // also hasLeftChild and hasRightChild.
         // }
+
+        int pos = 0;
+        boolean done = true;
+        // int largerChildPos;
+        while (done && (this.hasLeftChild(pos) || this.hasRightChild(pos))) {
+            if (this.hasLeftChild(pos) && this.hasRightChild(pos)) {
+                if (this.isBigger(rightChild(pos), leftChild(pos))) {
+                    int largerChildPos = rightChild(pos);
+                    this.swapWithRightChild(pos);
+                    pos = largerChildPos;
+                } else if (this.isBigger(leftChild(pos), rightChild(pos))) {
+                    int largerChildPos = leftChild(pos);
+                    this.swapWithLeftChild(pos);
+                    pos = leftChild(pos);
+                } else {
+                    done = false;
+                }
+            } else if (this.hasRightChild(pos)) {
+                if (this.isBigger(rightChild(pos), pos)) {
+                    int largerNode = rightChild(pos);
+                    this.swapWithRightChild(pos);
+                    pos = rightChild(pos);
+                }
+            } else if (this.hasLeftChild(pos)) {
+                if (this.isBigger(leftChild(pos), pos)) {
+                    int largerNode = leftChild(pos);
+                    this.swapWithLeftChild(pos);
+                    pos = leftChild(pos);
+                }
+            } else {
+                done = false;
+            }
+        }
+
     }
 
     /**
@@ -159,12 +190,12 @@ public class Heap<E extends Comparable<E>> {
         // You should use the isBigger, parent, and swapWithParent methods.
 
         while (!this.isBigger(parent(pos), pos) && pos > 0) {
-           // System.out.println(pos);
+            // System.out.println(pos);
             int newPos = parent(pos);
             swapWithParent(pos);
             pos = newPos;
             // System.out.println("Round" + count);
-            // this.print(); 
+            // this.print();
         }
 
     }
@@ -180,9 +211,7 @@ public class Heap<E extends Comparable<E>> {
         // FILL IN
         E lastItem = item;
         storage.add(lastItem);
-        //System.out.println(storage.size());
         bubbleUp(storage.size() - 1);
-      
 
     }
 
@@ -233,12 +262,14 @@ public class Heap<E extends Comparable<E>> {
         h.insert(3);
         h.insert(14);
 
+        System.out.println("Bubble Sorted: ");
         h.print();
 
-        // System.out.println(h.popTop()); 
-        // System.out.println(h.popTop());
+        System.out.println(h.popTop());
+        System.out.println(h.popTop());
 
-        
+        System.out.println("bubble down");
+        h.print();
 
     }
 }
